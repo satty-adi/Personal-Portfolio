@@ -1,0 +1,875 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Vegi Sarthak</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Vegi Sarthak, backend and full-stack developer working in Python and Django.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,100..900&family=Fragment+Mono&family=Instrument+Sans:wght@400..700&display=swap">
+<style>
+/* Layout: a page-builder workspace. urls.py rail on the left, the resume as one artboard, two live cursors on top. */
+:root{
+  --canvas:#DCE5DF; --dot:#B4C4B9; --sheet:#F8FAF6; --ink:#0C3024; --muted:#4A675B; --line:#CDD9D0;
+  --you:#2447F9; --you-ink:#FFFFFF; --sarthak:#CF3A12; --sarthak-ink:#FFFFFF;
+  --solid:#0C4B33; --solid-ink:#F1F7F3; --tint:#E6ECFF;
+  --display:'Anybody','Arial Black',Impact,sans-serif;
+  --body:'Instrument Sans',-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'Fragment Mono',ui-monospace,Menlo,Consolas,monospace;
+  --bar:48px; --status:26px; --rail:224px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --canvas:#07201A; --dot:#1B3F33; --sheet:#0E2C23; --ink:#E7F1EB; --muted:#97B7AA; --line:#1F473A;
+  --you:#8AA1FF; --you-ink:#0A1440; --sarthak:#FF8A5F; --sarthak-ink:#2E0C00;
+  --solid:#BFE6D2; --solid-ink:#0A2A20; --tint:#1B2F5C; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --canvas:#07201A; --dot:#1B3F33; --sheet:#0E2C23; --ink:#E7F1EB; --muted:#97B7AA; --line:#1F473A;
+  --you:#8AA1FF; --you-ink:#0A1440; --sarthak:#FF8A5F; --sarthak-ink:#2E0C00;
+  --solid:#BFE6D2; --solid-ink:#0A2A20; --tint:#1B2F5C; color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{overflow-x:clip;-webkit-text-size-adjust:100%}
+body{
+  margin:0;position:relative;overflow-x:clip;color:var(--ink);font:400 17px/1.55 var(--body);
+  background-color:var(--canvas);
+  background-image:radial-gradient(var(--dot) 1px,transparent 1.2px);background-size:22px 22px;
+}
+h1,h2,h3,p,ul,ol,dl,dd{margin:0;padding:0}
+ul,ol{list-style:none}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;padding:0}
+:focus-visible{outline:2px solid var(--you);outline-offset:2px}
+.mono{font-family:var(--mono)}
+
+/* tool states */
+html[data-tool="move"] body,html[data-tool="measure"] body{-webkit-user-select:none;user-select:none}
+.selectable{-webkit-user-select:text!important;user-select:text!important}
+html.fine[data-tool="move"],html.fine[data-tool="move"] *,
+html.fine[data-tool="measure"],html.fine[data-tool="measure"] *{cursor:none!important}
+html[data-tool="read"] [data-block]{translate:none!important}
+html[data-tool="read"] #slots,html.fine[data-tool="read"] #ghost-layer{display:none}
+
+/* workspace chrome */
+#bar{
+  position:fixed;z-index:40;inset:0 0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;
+  height:calc(var(--bar) + env(safe-area-inset-top,0px));padding-top:env(safe-area-inset-top,0px);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  background:var(--sheet);border-bottom:1px solid var(--line);
+}
+#brand{font:400 13px/1 var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+#brand span{color:var(--muted)}
+#tools{display:flex;gap:2px;padding:3px;background:var(--canvas)}
+#tools button{display:flex;align-items:center;gap:7px;height:32px;padding-inline:11px;font-size:14px;font-weight:600}
+#tools button svg{width:15px;height:15px;flex:none}
+#tools button[aria-pressed="true"]{background:var(--you);color:var(--you-ink)}
+#tools kbd{font:400 11px/1 var(--mono);opacity:.65}
+html.touch #tools [data-tool="move"]{display:none}
+#right{display:flex;justify-content:flex-end;align-items:center;gap:12px;min-width:0}
+#reset{height:30px;padding-inline:11px;font-size:13.5px;font-weight:600;border:1px solid var(--ink);white-space:nowrap}
+#people{display:flex;gap:6px;font:400 12px/1 var(--mono)}
+#people span{display:block;padding:6px 8px}
+#people .p-s{background:var(--sarthak);color:var(--sarthak-ink)}
+#people .p-y{background:var(--you);color:var(--you-ink)}
+
+#rail{
+  position:fixed;z-index:30;top:calc(var(--bar) + env(safe-area-inset-top,0px));bottom:var(--status);left:0;width:var(--rail);
+  display:none;flex-direction:column;gap:14px;padding:18px 14px;
+  padding-left:max(14px,env(safe-area-inset-left,0px));
+  background:var(--sheet);border-right:1px solid var(--line);font:400 12.5px/1.3 var(--mono);
+}
+#rail .file{color:var(--muted)}
+#rail ol{display:grid;gap:1px;margin-block:4px}
+#rail ol button{display:block;width:100%;padding:6px 8px 6px 14px;text-align:left;white-space:nowrap}
+#rail ol button b{font-weight:400;color:var(--muted)}
+#rail ol button[aria-current="true"]{background:var(--tint);color:var(--ink)}
+#rail ol button[aria-current="true"] b{color:var(--ink)}
+#rail .help{margin-top:auto;color:var(--muted);font:400 13px/1.45 var(--body)}
+
+#status{
+  position:fixed;z-index:30;inset:auto 0 0;height:var(--status);display:none;align-items:center;gap:14px;
+  padding-left:max(14px,env(safe-area-inset-left,0px));padding-right:max(14px,env(safe-area-inset-right,0px));
+  background:var(--ink);color:var(--sheet);font:400 11.5px/1 var(--mono);white-space:nowrap;overflow:hidden;
+}
+@media (min-width:760px){#status{display:flex}}
+#status i{font-style:normal;opacity:.7}
+
+/* artboard */
+#stage{
+  padding-block:calc(var(--bar) + env(safe-area-inset-top,0px) + 22px) calc(var(--status) + 56px);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+@media (min-width:1180px){
+  #rail{display:flex}
+  #stage{padding-left:calc(var(--rail) + 36px);padding-right:max(36px,env(safe-area-inset-right,0px))}
+}
+#frame{max-width:1080px;margin-inline:auto}
+#frame-label{display:flex;justify-content:space-between;gap:12px;padding-bottom:7px;font:400 12px/1.2 var(--mono);color:var(--muted)}
+#sheet{position:relative;background:var(--sheet);padding-inline:clamp(20px,5vw,60px);box-shadow:0 1px 0 var(--line),0 0 0 1px var(--line)}
+[data-block]{position:relative}
+[data-block].moved,[data-block].lifted{z-index:5;background:var(--sheet);box-shadow:0 0 0 8px var(--sheet)}
+.brick.moved,.brick.lifted{box-shadow:none}
+.brick.solid.moved,.brick.solid.lifted{background:var(--solid)}
+[data-block].lifted{z-index:20;box-shadow:0 0 0 8px var(--sheet),0 18px 34px -14px rgb(0 0 0 / .45)}
+.brick.lifted{box-shadow:0 18px 34px -14px rgb(0 0 0 / .45)}
+[data-block].settling{transition:translate .42s cubic-bezier(.3,1.2,.4,1)}
+.slot{position:absolute;border:1px dashed var(--dot);pointer-events:none}
+#slots{position:absolute;left:0;top:0;width:0;height:0;z-index:1}
+
+.route{display:block;font:400 12.5px/1.4 var(--mono);color:var(--muted)}
+.sec{
+  display:grid;grid-template-columns:minmax(0,1fr);gap:22px;padding-block:clamp(38px,6vw,62px);
+  border-top:1px solid var(--line);scroll-margin-top:calc(var(--bar) + 18px);
+}
+@media (min-width:860px){.sec{grid-template-columns:minmax(0,3fr) minmax(0,8fr);gap:32px}}
+.sec h2{font:800 clamp(27px,2.8vw,33px)/1.02 var(--display);font-stretch:100%;letter-spacing:-.01em;text-transform:uppercase;padding-top:8px;text-wrap:balance}
+.sec.full{grid-template-columns:minmax(0,1fr)}
+
+/* hero */
+#home{padding-block:clamp(22px,4vw,38px) clamp(34px,5vw,54px);scroll-margin-top:calc(var(--bar) + 60px)}
+#name{
+  width:fit-content;max-width:100%;margin-block:14px 26px;font:900 clamp(56px,16vw,180px)/.84 var(--display);
+  letter-spacing:0;text-transform:uppercase;color:var(--ink);
+}
+#name .ln{display:block;width:fit-content;white-space:nowrap}
+.hero-row{display:grid;grid-template-columns:minmax(0,1fr);gap:26px}
+@media (min-width:860px){.hero-row{grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:48px;align-items:start}}
+#lede{font-size:clamp(20px,2.2vw,25px);line-height:1.35;font-weight:500;max-width:30em;text-wrap:pretty}
+#lede small{display:block;margin-top:12px;font-size:16px;line-height:1.5;font-weight:400;color:var(--muted)}
+.facts{display:grid;gap:0}
+.fact{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:baseline;padding-block:9px;border-top:1px solid var(--line)}
+.fact:last-child{border-bottom:1px solid var(--line)}
+.fact dt{font-weight:600}
+.fact dd{font:400 13px/1.3 var(--mono);color:var(--muted);text-align:right}
+
+/* work */
+.job-h{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 18px;align-items:baseline}
+.job-h h3,.proj h3,.row h3{font:800 clamp(21px,2.4vw,26px)/1.12 var(--display);font-stretch:105%}
+.when{font:400 13px/1.3 var(--mono);color:var(--muted);white-space:nowrap}
+.role{color:var(--muted);margin-top:2px}
+.prose{max-width:62ch;margin-top:12px;text-wrap:pretty}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;font:400 12.5px/1 var(--mono)}
+.tags li{padding:6px 8px;background:var(--canvas)}
+
+/* projects */
+#project-list{display:grid;gap:44px}
+.proj{display:grid;grid-template-columns:minmax(0,1fr);gap:22px}
+@media (min-width:1000px){.proj{grid-template-columns:minmax(0,1fr) minmax(0,.82fr);gap:32px;align-items:start}}
+.kind{font:400 12.5px/1.3 var(--mono);color:var(--muted);margin-bottom:6px}
+.flow{display:grid;gap:18px;font-size:15px;line-height:1.3}
+.flow li{position:relative;padding:11px 13px;border:1.5px solid var(--ink);background:var(--sheet)}
+.flow li:not(:last-child)::after{content:"";position:absolute;left:22px;top:100%;width:1.5px;height:18px;background:var(--ink)}
+.flow li.hot{background:var(--solid);color:var(--solid-ink);border-color:var(--solid)}
+.flow small{display:block;font:400 11.5px/1.3 var(--mono);opacity:.75;margin-bottom:3px}
+.pages{
+  position:relative;margin-right:40px;margin-bottom:40px;padding:18px;background:var(--sheet);border:1.5px solid var(--ink);
+  box-shadow:8px 8px 0 -1.5px var(--sheet),8px 8px 0 0 var(--ink),16px 16px 0 -1.5px var(--sheet),16px 16px 0 0 var(--ink),
+    24px 24px 0 -1.5px var(--sheet),24px 24px 0 0 var(--ink),32px 32px 0 -1.5px var(--sheet),32px 32px 0 0 var(--ink),
+    40px 40px 0 -1.5px var(--sheet),40px 40px 0 0 var(--ink);
+}
+.pages b{display:block;font:900 64px/.9 var(--display);font-stretch:120%}
+.pages > span{display:block;font-weight:600;margin-bottom:12px}
+.pages ul{display:grid;gap:4px;font:400 13px/1.3 var(--mono);color:var(--muted)}
+
+/* stack */
+.legend{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:14.5px;color:var(--muted)}
+.legend i{width:26px;height:12px;background:var(--solid);flex:none}
+.wall{display:grid;gap:6px}
+.course{display:grid;grid-template-columns:minmax(0,1fr);gap:6px}
+@media (min-width:640px){.course{grid-template-columns:92px minmax(0,1fr);align-items:center;gap:12px}}
+.course > span{font:400 12.5px/1.2 var(--mono);color:var(--muted)}
+.bricks{display:flex;flex-wrap:wrap;gap:6px}
+.brick{flex:1 1 auto;padding:12px 14px;background:var(--sheet);border:1.5px solid var(--ink);font-weight:600;font-size:15.5px;line-height:1.2;text-align:center;white-space:nowrap}
+.brick.solid{background:var(--solid);color:var(--solid-ink);border-color:var(--solid)}
+
+/* proof + education */
+.rows{display:grid;gap:26px}
+.row{display:grid;gap:4px}
+.row .job-h{margin-bottom:2px}
+.row p{max-width:60ch;text-wrap:pretty}
+
+/* contact */
+#email{display:block;font:800 clamp(23px,4.6vw,48px)/1.08 var(--display);font-stretch:88%;overflow-wrap:anywhere;text-decoration:none;margin-top:10px}
+#email:hover{color:var(--you)}
+#copy{margin-top:18px;height:40px;padding-inline:16px;font-weight:600;background:var(--you);color:var(--you-ink)}
+#foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 18px;padding-block:18px 22px;border-top:1px solid var(--line);font:400 12px/1.3 var(--mono);color:var(--muted)}
+
+/* inspector */
+#insp{
+  position:fixed;z-index:70;top:calc(var(--bar) + env(safe-area-inset-top,0px));right:0;bottom:var(--status);width:min(380px,100vw);
+  display:flex;flex-direction:column;background:var(--sheet);border-left:1px solid var(--line);box-shadow:-14px 0 34px -22px rgb(0 0 0 / .5);
+  padding-right:env(safe-area-inset-right,0px);
+}
+@media (max-width:759px){
+  #insp{top:auto;left:0;bottom:0;width:auto;max-height:64vh;border-left:0;border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:env(safe-area-inset-left,0px)}
+}
+#insp header{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--line);font:400 13px/1.2 var(--mono)}
+#insp .verb{padding:4px 6px;background:var(--you);color:var(--you-ink)}
+#insp-route{min-width:0;overflow-wrap:anywhere;flex:1}
+#insp-close{width:32px;height:32px;font-size:20px;line-height:1;flex:none}
+#insp-note{padding:12px 14px 0;font-size:14px;color:var(--muted)}
+#insp pre{flex:1;margin:0;padding:12px 14px 16px;overflow:auto;font:400 12.5px/1.6 var(--mono);white-space:pre-wrap;overflow-wrap:anywhere}
+#insp pre .k{color:var(--you)}
+#insp pre .s{color:var(--ink)}
+#insp pre .n{color:var(--sarthak)}
+#insp dl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);font:400 12px/1.3 var(--mono)}
+#insp dl div{padding:9px 14px}
+#insp dl dt{color:var(--muted)}
+
+/* cursor layers */
+#overlay{position:fixed;inset:0;z-index:60;pointer-events:none;overflow:hidden}
+html[data-tool="read"] #overlay{display:none}
+#sel{position:absolute;left:0;top:0;outline:1.5px solid var(--you)}
+#sel i{position:absolute;width:8px;height:8px;background:var(--sheet);border:1.5px solid var(--you)}
+#sel i:nth-of-type(1){left:-4px;top:-4px}#sel i:nth-of-type(2){right:-4px;top:-4px}
+#sel i:nth-of-type(3){left:-4px;bottom:-4px}#sel i:nth-of-type(4){right:-4px;bottom:-4px}
+#sel.stretchy i:nth-of-type(5){display:block}
+#sel i:nth-of-type(5){display:none;right:-5px;top:50%;width:10px;height:26px;margin-top:-13px;background:var(--you)}
+#sel-tag{position:absolute;left:-1.5px;bottom:100%;margin-bottom:5px;padding:3px 6px;background:var(--you);color:var(--you-ink);font:400 11.5px/1.2 var(--mono);white-space:nowrap}
+#sel.tag-in #sel-tag{bottom:auto;top:6px;left:6px;margin:0}
+html[data-tool="measure"] #sel{outline-style:dashed}
+html[data-tool="measure"] #sel i{display:none}
+.guide{position:absolute;left:0;top:0;background:var(--sarthak)}
+#gv{width:1px}#gh{height:1px}
+.gap{position:absolute;left:0;top:0;height:1px;background:var(--sarthak)}
+.gap b{position:absolute;left:50%;top:-20px;translate:-50% 0;padding:2px 4px;background:var(--sarthak);color:var(--sarthak-ink);font:400 11px/1.2 var(--mono);white-space:nowrap}
+#xh,#xv{position:absolute;left:0;top:0;background:var(--you);opacity:.5}
+#xh{width:100%;height:1px}#xv{height:100%;width:1px}
+
+#cur{position:fixed;left:0;top:0;z-index:100;pointer-events:none;will-change:translate}
+html[data-tool="read"] #cur,html.touch #cur{display:none}
+#cur svg{position:absolute;left:0;top:0;display:none;overflow:visible}
+#cur[data-mode="arrow"] .c-arrow,#cur[data-mode="grab"] .c-arrow{display:block}
+#cur[data-mode="grab"] .c-arrow{scale:.86;transform-origin:0 0}
+#cur[data-mode="cross"] .c-cross{display:block}
+#cur[data-mode="ew"] .c-ew{display:block}
+#cur-pill{position:absolute;left:17px;top:21px;padding:3px 6px;background:var(--you);color:var(--you-ink);font:400 11.5px/1.2 var(--mono);white-space:nowrap}
+
+#ghost-layer{position:absolute;inset:0;z-index:50;overflow:clip;pointer-events:none}
+#ghost{position:absolute;left:0;top:0;translate:var(--x,0) var(--y,0);transition:translate var(--t,640ms) cubic-bezier(.62,.04,.2,1);width:max-content}
+#ghost svg{display:block;overflow:visible;transition:scale .12s;transform-origin:0 0}
+#ghost.press svg{scale:.84}
+#ghost .pill{position:absolute;left:17px;top:21px;padding:3px 6px;background:var(--sarthak);color:var(--sarthak-ink);font:400 11.5px/1.2 var(--mono)}
+#ghost-say{position:absolute;left:17px;top:44px;width:max-content;max-width:min(232px,calc(100vw - 48px));padding:8px 10px;background:var(--sarthak);color:var(--sarthak-ink);font:500 14.5px/1.3 var(--body)}
+#ghost.edge .pill{left:auto;right:calc(100% - 8px)}
+#ghost.flip #ghost-say{left:auto;top:-3px;right:calc(100% + 4px);max-width:calc(100vw - 112px)}
+
+@media (prefers-reduced-motion:reduce){
+  #ghost,[data-block].settling{transition:none}
+  html{scroll-behavior:auto}
+}
+@media (max-width:899px){#tools kbd{display:none}}
+@media (max-width:640px){#people{display:none}#bar{grid-template-columns:minmax(0,1fr) auto}#right{display:none}#right:has(#reset:not([hidden])){display:flex}#brand .long{display:none}}
+</style>
+
+<div id="bar">
+  <div id="brand"><span class="long">$ python manage.py </span>runserver <span>vegi-sarthak</span></div>
+  <div id="tools" role="toolbar" aria-label="Cursor tools">
+    <button type="button" data-tool="move" aria-pressed="true" title="Drag blocks and stretch the name">
+      <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2 1l.1 12.6 3.3-3 2.3 5 2.4-1.1-2.3-4.9 4.5-.3z"/></svg>Move<kbd>V</kbd></button>
+    <button type="button" data-tool="measure" aria-pressed="false" title="Measure blocks and read their data">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 1v14M1 8h14"/><circle cx="8" cy="8" r="3.4"/></svg><span id="measure-label">Measure</span><kbd>M</kbd></button>
+    <button type="button" data-tool="read" aria-pressed="false" title="Plain page with your normal cursor">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 3.2h5.2c.5 0 .8.4.8.8v9c0-.6-.4-1-1-1H2zM14 3.2H8.8c-.5 0-.8.4-.8.8v9c0-.6.4-1 1-1h5z"/></svg>Read<kbd>R</kbd></button>
+  </div>
+  <div id="right">
+    <button type="button" id="reset" hidden>Reset layout</button>
+    <div id="people" aria-hidden="true"><span class="p-s">Sarthak</span><span class="p-y">You</span></div>
+  </div>
+</div>
+
+<nav id="rail" aria-label="Sections">
+  <div class="file">portfolio/urls.py</div>
+  <div>
+    <div>urlpatterns = [</div>
+    <ol id="routes">
+      <li><button type="button" data-go="home">path(<b>""</b>),</button></li>
+      <li><button type="button" data-go="work">path(<b>"work/"</b>),</button></li>
+      <li><button type="button" data-go="projects">path(<b>"projects/"</b>),</button></li>
+      <li><button type="button" data-go="stack">path(<b>"stack/"</b>),</button></li>
+      <li><button type="button" data-go="proof">path(<b>"proof/"</b>),</button></li>
+      <li><button type="button" data-go="education">path(<b>"education/"</b>),</button></li>
+      <li><button type="button" data-go="contact">path(<b>"contact/"</b>),</button></li>
+    </ol>
+    <div>]</div>
+  </div>
+  <p class="help">Drag any block. Click one to see its data. Press R for a plain page.</p>
+</nav>
+
+<main id="stage">
+  <div id="frame">
+    <div id="frame-label"><span>Frame / portfolio</span><span id="frame-size"></span></div>
+    <div id="sheet">
+
+      <section id="home" data-block data-id="home" data-name="Home" data-route="/">
+        <code class="route">path("", views.home)</code>
+        <h1 id="name" data-block data-id="name" data-name="Name" data-route="/home/name/" aria-label="Vegi Sarthak">
+          <span class="ln" id="ln1" aria-hidden="true">Vegi</span>
+          <span class="ln" id="ln2" aria-hidden="true">Sarthak</span>
+        </h1>
+        <div class="hero-row">
+          <p id="lede" data-block data-id="lede" data-name="Intro" data-route="/home/intro/">
+            Backend and full-stack developer. I build web applications with Python and Django, and design the SQL underneath them.
+            <small>Computer Science undergraduate at GITAM University, class of 2027.</small>
+          </p>
+          <dl class="facts">
+            <div class="fact" data-block data-id="f-tcs" data-name="TCS Prime" data-route="/proof/tcs-prime/"><dt>Selected for TCS Prime</dt><dd>2026</dd></div>
+            <div class="fact" data-block data-id="f-sih" data-name="SIH 2025" data-route="/proof/sih-2025/"><dt>Team lead, Smart India Hackathon</dt><dd>2025</dd></div>
+            <div class="fact" data-block data-id="f-gat" data-name="GAT" data-route="/proof/gat/"><dt>Rank 99 in the GITAM Admission Test</dt><dd>75% scholarship</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section id="work" class="sec" data-block data-id="work" data-name="Work" data-route="/work/" data-say="Raw sales data in, six dashboard pages out.">
+        <header><code class="route">path("work/", views.work)</code><h2>Work</h2></header>
+        <article data-block data-id="algoleap" data-name="Algoleap" data-route="/work/algoleap/">
+          <div class="job-h"><h3>Algoleap Technologies Pvt Ltd</h3><span class="when">May 2026 – July 2026</span></div>
+          <p class="role">Data analytics internship</p>
+          <p class="prose">Analyzed and transformed raw sales data with SQL and Power BI. Built a 6-page interactive dashboard covering sales, profit, customers, forecasting and sales representative performance. Its KPIs and visualizations improved business performance monitoring and supported data-driven decisions.</p>
+          <ul class="tags"><li>SQL</li><li>Power BI</li><li>KPIs</li></ul>
+        </article>
+      </section>
+
+      <section id="projects" class="sec" data-block data-id="projects" data-name="Projects" data-route="/projects/" data-say="FILLUP is my full-stack Django build.">
+        <header><code class="route">path("projects/", views.projects)</code><h2>Projects</h2></header>
+        <div id="project-list">
+          <article class="proj" data-block data-id="fillup" data-name="FILLUP" data-route="/projects/fillup/">
+            <div>
+              <p class="kind">Full-stack web app</p>
+              <h3>FILLUP</h3>
+              <p class="prose">A fuel delivery platform that tackles fuel accessibility by letting people request fuel at their location. I implemented the backend logic and request-handling endpoints in Django for order management, request processing and database integration, following REST-based URL and API design. The responsive frontend is HTML and CSS.</p>
+              <ul class="tags"><li>Python</li><li>Django</li><li>REST conventions</li><li>HTML</li><li>CSS</li></ul>
+            </div>
+            <ol class="flow" aria-label="How a FILLUP request moves through the system">
+              <li><small>frontend</small>Fuel requested at the user's location</li>
+              <li class="hot"><small>django</small>Request-handling endpoints</li>
+              <li class="hot"><small>django</small>Order management and processing</li>
+              <li><small>storage</small>Database</li>
+            </ol>
+          </article>
+          <article class="proj" data-block data-id="dashboard" data-name="Sales Dashboard" data-route="/projects/sales-dashboard/">
+            <div>
+              <p class="kind">Data analytics, built during my internship</p>
+              <h3>Sales Performance Dashboard</h3>
+              <p class="prose">An interactive Power BI dashboard built from raw sales data that I analyzed and transformed with SQL. KPIs and visualizations turn that data into insights a business can act on, and make performance easier to monitor.</p>
+              <ul class="tags"><li>SQL</li><li>Power BI</li></ul>
+            </div>
+            <div class="pages">
+              <b>6</b><span>interactive pages</span>
+              <ul><li>Sales</li><li>Profit</li><li>Customers</li><li>Forecasting</li><li>Sales rep performance</li></ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="stack" class="sec" data-block data-id="stack" data-name="Stack" data-route="/stack/" data-say="Pull a brick out of the wall. Reset puts it back.">
+        <header>
+          <code class="route">path("stack/", views.stack)</code><h2>Stack</h2>
+          <p class="legend"><i></i>Main focus</p>
+        </header>
+        <div class="wall">
+          <div class="course" data-group="Languages"><span>Languages</span><div class="bricks"><div class="brick solid">Python</div><div class="brick">C</div></div></div>
+          <div class="course" data-group="Backend"><span>Backend</span><div class="bricks"><div class="brick solid">Django</div><div class="brick solid">Django REST Framework</div><div class="brick solid">REST APIs</div></div></div>
+          <div class="course" data-group="Databases"><span>Databases</span><div class="bricks"><div class="brick">SQL</div><div class="brick">MySQL</div><div class="brick">PostgreSQL</div></div></div>
+          <div class="course" data-group="Frontend"><span>Frontend</span><div class="bricks"><div class="brick">HTML</div><div class="brick">CSS</div><div class="brick">Bootstrap</div></div></div>
+          <div class="course" data-group="Data"><span>Data</span><div class="bricks"><div class="brick">Power BI</div><div class="brick">Pandas</div><div class="brick">NumPy</div><div class="brick">Seaborn</div><div class="brick">Matplotlib</div></div></div>
+          <div class="course" data-group="Tools"><span>Tools</span><div class="bricks"><div class="brick">Git</div><div class="brick">GitHub</div><div class="brick">Postman</div><div class="brick">VS Code</div></div></div>
+        </div>
+      </section>
+
+      <section id="proof" class="sec" data-block data-id="proof" data-name="Proof" data-route="/proof/" data-say="I led the team at SIH 2025.">
+        <header><code class="route">path("proof/", views.proof)</code><h2>Leadership &amp; wins</h2></header>
+        <div class="rows">
+          <div class="row" data-block data-id="tcs" data-name="TCS Prime" data-route="/proof/tcs-prime/">
+            <div class="job-h"><h3>TCS Prime, selected candidate</h3><span class="when">2026 · ₹9 LPA</span></div>
+            <p>Selected for the TCS Prime role through the campus placement drive.</p>
+          </div>
+          <div class="row" data-block data-id="sih" data-name="SIH 2025" data-route="/proof/sih-2025/">
+            <div class="job-h"><h3>Smart India Hackathon, team lead</h3><span class="when">2025</span></div>
+            <p>Led a cross-functional team to design and develop a two-step verification attendance management system, coordinating development and project execution.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="education" class="sec" data-block data-id="education" data-name="Education" data-route="/education/">
+        <header><code class="route">path("education/", views.education)</code><h2>Education</h2></header>
+        <div class="row" data-block data-id="gitam" data-name="GITAM" data-route="/education/gitam/">
+          <div class="job-h"><h3>Bachelor's Degree, GITAM University</h3><span class="when">2023 – 2027</span></div>
+          <p>Secured a 75% scholarship after ranking 99th in the GITAM Admission Test (GAT), the university's entrance examination.</p>
+          <ul class="tags" aria-label="Relevant coursework"><li>DSA</li><li>DBMS</li><li>OOPs</li><li>Operating Systems</li><li>Web Technologies</li><li>Data Analytics</li></ul>
+        </div>
+      </section>
+
+      <section id="contact" class="sec full" data-block data-id="contact" data-name="Contact" data-route="/contact/">
+        <div>
+          <code class="route">path("contact/", views.contact)</code>
+          <a id="email" class="selectable" href="mailto:vegisarthakaditya@gmail.com">vegisarthakaditya@gmail.com</a>
+          <button type="button" id="copy">Copy email</button>
+        </div>
+      </section>
+
+      <footer id="foot"><span>Vegi Sarthak, 2026</span><span id="foot-hint">Press R for a plain page</span></footer>
+    </div>
+  </div>
+</main>
+
+<aside id="insp" aria-label="Block data" hidden>
+  <header><span class="verb">GET</span><span id="insp-route"></span><button type="button" id="insp-close" aria-label="Close block data">×</button></header>
+  <p id="insp-note">This block's content, as JSON.</p>
+  <pre id="insp-json" class="selectable" tabindex="0"></pre>
+  <dl id="insp-box"></dl>
+</aside>
+
+<div id="status" aria-hidden="true"><i>Starting development server</i><span id="log">"GET / HTTP/1.1" 200</span></div>
+
+<div id="slots" aria-hidden="true"></div>
+<div id="ghost-layer" aria-hidden="true">
+  <div id="ghost" hidden>
+    <svg width="20" height="24" viewBox="0 0 20 24"><path d="M1.5 1.5l.2 18.2 5-4.4 3.6 7.6 3.5-1.6-3.5-7.5 6.7-.4z" fill="var(--sarthak)" stroke="var(--sheet)" stroke-width="1.5" stroke-linejoin="round"/></svg>
+    <span class="pill">Sarthak</span>
+    <div id="ghost-say" hidden></div>
+  </div>
+</div>
+<div id="overlay" aria-hidden="true">
+  <div id="xh" hidden></div><div id="xv" hidden></div>
+  <div id="sel" hidden><i></i><i></i><i></i><i></i><i></i><span id="sel-tag"></span></div>
+  <div id="gapl" class="gap" hidden><b></b></div><div id="gapr" class="gap" hidden><b></b></div>
+  <div id="gv" class="guide" hidden></div><div id="gh" class="guide" hidden></div>
+</div>
+<div id="cur" data-mode="arrow" aria-hidden="true" hidden>
+  <svg class="c-arrow" width="20" height="24" viewBox="0 0 20 24"><path d="M1.5 1.5l.2 18.2 5-4.4 3.6 7.6 3.5-1.6-3.5-7.5 6.7-.4z" fill="var(--you)" stroke="var(--sheet)" stroke-width="1.5" stroke-linejoin="round"/></svg>
+  <svg class="c-cross" width="1" height="1"><circle r="4" fill="none" stroke="var(--you)" stroke-width="1.5"/></svg>
+  <svg class="c-ew" width="1" height="1"><path d="M-13 0h26M-13 0l5-5M-13 0l5 5M13 0l-5-5M13 0l-5 5" fill="none" stroke="var(--sheet)" stroke-width="5" stroke-linecap="round"/><path d="M-13 0h26M-13 0l5-5M-13 0l5 5M13 0l-5-5M13 0l-5 5" fill="none" stroke="var(--you)" stroke-width="2" stroke-linecap="round"/></svg>
+  <span id="cur-pill">You</span>
+</div>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const root = document.documentElement;
+  const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.add(fine ? 'fine' : 'touch');
+
+  const sheet = $('#sheet'), name = $('#name'), ln1 = $('#ln1'), ln2 = $('#ln2'), lede = $('#lede');
+  const sel = $('#sel'), selTag = $('#sel-tag'), cur = $('#cur'), pill = $('#cur-pill');
+  const gv = $('#gv'), gh = $('#gh'), xh = $('#xh'), xv = $('#xv'), gapl = $('#gapl'), gapr = $('#gapr');
+  const ghost = $('#ghost'), say = $('#ghost-say'), insp = $('#insp'), resetBtn = $('#reset'), logEl = $('#log');
+
+  /* bricks become blocks with their own routes */
+  const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  $$('.brick').forEach(b => {
+    const t = b.textContent;
+    b.dataset.block = ''; b.dataset.id = 'brick'; b.dataset.name = t; b.dataset.route = `/stack/${slug(t)}/`;
+  });
+
+  const DATA = {
+    home: { name: 'Vegi Sarthak', role: 'Backend and full-stack developer', focus: ['Python', 'Django', 'SQL'], university: 'GITAM University', class_of: 2027 },
+    lede: { summary: 'Computer Science undergraduate focused on backend and full-stack web development using Python and Django.', foundations: ['Data Structures and Algorithms', 'Relational databases'], also: ['Data Analytics', 'Power BI'] },
+    work: { results: [{ company: 'Algoleap Technologies Pvt Ltd', from: '2026-05', to: '2026-07' }] },
+    algoleap: { company: 'Algoleap Technologies Pvt Ltd', type: 'Data analytics internship', from: '2026-05', to: '2026-07', tools: ['SQL', 'Power BI'], delivered: '6-page interactive dashboard', covers: ['sales', 'profit', 'customers', 'forecasting', 'sales rep performance'] },
+    projects: { count: 2, results: ['FILLUP', 'Sales Performance Dashboard'] },
+    fillup: { title: 'FILLUP', type: 'Full-stack fuel delivery platform', problem: 'Fuel accessibility', backend: ['Python', 'Django'], frontend: ['HTML', 'CSS'], handles: ['order management', 'request processing', 'database integration'], api_style: 'REST-based URLs and conventions' },
+    dashboard: { title: 'Sales Performance Dashboard', pages: 6, interactive: true, tools: ['SQL', 'Power BI'], covers: ['sales', 'profit', 'customers', 'forecasting', 'sales rep performance'] },
+    stack: { languages: ['Python', 'C'], backend: ['Django', 'Django REST Framework', 'REST APIs'], databases: ['SQL', 'MySQL', 'PostgreSQL'], frontend: ['HTML', 'CSS', 'Bootstrap'], data: ['Power BI', 'Pandas', 'NumPy', 'Seaborn', 'Matplotlib'], tools: ['Git', 'GitHub', 'Postman', 'VS Code'] },
+    proof: { results: ['TCS Prime', 'Smart India Hackathon 2025'] },
+    tcs: { title: 'TCS Prime', status: 'Selected candidate', package: '₹9 LPA', year: 2026, via: 'Campus placement drive' },
+    sih: { title: 'Smart India Hackathon', year: 2025, role: 'Team lead', built: 'Two-step verification attendance management system' },
+    education: { degree: "Bachelor's Degree", university: 'GITAM University', from: 2023, to: 2027 },
+    gitam: { degree: "Bachelor's Degree", university: 'GITAM University', from: 2023, to: 2027, gat_rank: 99, scholarship_percent: 75, coursework: ['DSA', 'DBMS', 'OOPs', 'Operating Systems', 'Web Technologies', 'Data Analytics'] },
+    contact: { email: 'vegisarthakaditya@gmail.com' },
+  };
+  DATA['f-tcs'] = DATA.tcs; DATA['f-sih'] = DATA.sih;
+  DATA['f-gat'] = { exam: 'GITAM Admission Test', rank: 99, scholarship_percent: 75 };
+
+  /* runserver log */
+  const MONTHS = 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split(' ');
+  const p2 = n => String(n).padStart(2, '0');
+  function log(verb, path, code = 200) {
+    const d = new Date();
+    logEl.textContent = `[${p2(d.getDate())}/${MONTHS[d.getMonth()]}/${d.getFullYear()} ${p2(d.getHours())}:${p2(d.getMinutes())}:${p2(d.getSeconds())}] "${verb} ${path} HTTP/1.1" ${code}`;
+    logEl.previousElementSibling.hidden = true;
+  }
+
+  /* the name: both lines justified to the artboard with the font's width axis */
+  const STEPS = [50, 75, 100, 125, 150];
+  let t1 = [], t2 = [], fullW = 0, frac = 1, minFrac = .4;
+  function setLine(ln, table, W) {
+    let st, ls = 0;
+    if (W >= table[4]) { st = 150; ls = (W - table[4]) / ln.textContent.length; }
+    else if (W <= table[0]) st = 50;
+    else {
+      let i = 0; while (W > table[i + 1]) i++;
+      st = STEPS[i] + (W - table[i]) / (table[i + 1] - table[i]) * 25;
+    }
+    ln.style.fontStretch = st.toFixed(1) + '%';
+    ln.style.letterSpacing = ls ? ls.toFixed(2) + 'px' : '0';
+    return st;
+  }
+  let nameStretch = 100;
+  function setFrac(f) {
+    frac = Math.max(minFrac, Math.min(1, f));
+    setLine(ln1, t1, fullW * frac);
+    nameStretch = setLine(ln2, t2, fullW * frac);
+  }
+  function buildFit() {
+    fullW = $('#home').clientWidth;
+    name.style.fontSize = '100px';
+    const measure = ln => STEPS.map(s => {
+      ln.style.fontStretch = s + '%'; ln.style.letterSpacing = '0';
+      return ln.getBoundingClientRect().width;
+    });
+    const a = measure(ln1), b = measure(ln2);
+    /* VEGI runs near the top of the width axis; SARTHAK condenses to meet it */
+    const F = Math.min(fullW / a[4] * 92, 250);
+    t1 = a.map(v => v * F / 100); t2 = b.map(v => v * F / 100);
+    name.style.fontSize = F.toFixed(2) + 'px';
+    minFrac = Math.max(t1[0], t2[0]) / fullW + .002;
+    setFrac(frac);
+  }
+  function frameLabel() {
+    const r = sheet.getBoundingClientRect();
+    $('#frame-size').textContent = `${Math.round(r.width)} × ${Math.round(r.height)}`;
+  }
+
+  /* tools */
+  let tool = 'read', hover = null, act = null, picked = null, mx = -1, my = -1, seen = false;
+  const offsets = new Map(), slots = new Map();
+  function setTool(t) {
+    tool = t; root.dataset.tool = t;
+    $$('#tools button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.tool === t)));
+    hover = null; if (t === 'read') closeInsp();
+    xh.hidden = xv.hidden = t !== 'measure' || !fine || !seen;
+    gapl.hidden = gapr.hidden = true;
+    cur.dataset.mode = t === 'measure' ? 'cross' : 'arrow';
+    pill.textContent = 'You';
+    if (t === 'read') { ghost.hidden = true; } else if (introDone) { ghost.hidden = false; }
+    if (seen) probe(); paint();
+  }
+  $$('#tools button').forEach(b => b.addEventListener('click', () => setTool(b.dataset.tool)));
+  if (!fine) { $('#measure-label').textContent = 'Inspect'; $('#foot-hint').textContent = 'Tap Inspect to see each block as JSON'; }
+
+  const inSheet = el => el && el.closest && !el.closest('#bar,#rail,#insp') ? el.closest('#sheet [data-block]') : null;
+  const blockAt = (x, y) => inSheet(document.elementFromPoint(x, y));
+  const nearEdge = (b, x, y) => {
+    if (b !== name || tool !== 'move') return false;
+    const r = name.getBoundingClientRect();
+    return Math.abs(x - r.right) < 16 && y > r.top - 4 && y < r.bottom + 4;
+  };
+
+  function probe() {
+    if (act || tool === 'read') return;
+    let b = blockAt(mx, my);
+    if (!b) {
+      const r = name.getBoundingClientRect();
+      if (Math.abs(mx - r.right) < 16 && my > r.top && my < r.bottom) b = name;
+    }
+    hover = b;
+    if (tool === 'move') {
+      const edge = b && nearEdge(b, mx, my);
+      cur.dataset.mode = edge ? 'ew' : 'arrow';
+      pill.textContent = edge ? 'Stretch' : 'You';
+      pill.style.left = edge ? '12px' : ''; pill.style.top = edge ? '14px' : '';
+    } else if (tool === 'measure') {
+      pill.style.left = '12px'; pill.style.top = '14px';
+      const el = document.elementFromPoint(mx, my);
+      const text = el && [...el.childNodes].some(n => n.nodeType === 3 && n.textContent.trim());
+      if (text && inSheet(el)) {
+        const c = getComputedStyle(el);
+        pill.textContent = `${c.fontFamily.split(',')[0].replace(/["']/g, '')} ${c.fontWeight} · ${Math.round(parseFloat(c.fontSize))}px`;
+      } else {
+        const s = sheet.getBoundingClientRect();
+        pill.textContent = `${Math.round(mx - s.left)}, ${Math.round(my - s.top)}`;
+      }
+    }
+  }
+
+  function paint() {
+    const b = act ? act.el : (hover || picked);
+    if (tool === 'read' || !b) { sel.hidden = true; gapl.hidden = gapr.hidden = true; return; }
+    const r = b.getBoundingClientRect();
+    sel.hidden = false;
+    sel.style.translate = `${r.left}px ${r.top}px`;
+    sel.style.width = r.width + 'px'; sel.style.height = r.height + 'px';
+    sel.classList.toggle('stretchy', b === name && tool === 'move');
+    sel.classList.toggle('tag-in', r.top < 76);
+    selTag.textContent = `${b.dataset.name}  ${Math.round(r.width)} × ${Math.round(r.height)}`;
+    if (tool === 'measure' && fine) {
+      const s = sheet.getBoundingClientRect(), y = r.top + r.height / 2;
+      const put = (g, x1, x2) => {
+        const w = Math.round(x2 - x1); g.hidden = w < 8;
+        g.style.translate = `${x1}px ${y}px`; g.style.width = (x2 - x1) + 'px'; g.firstChild.textContent = w;
+      };
+      put(gapl, s.left, r.left); put(gapr, r.right, s.right);
+    }
+  }
+  function moveCursor() {
+    cur.style.translate = `${mx}px ${my}px`;
+    if (tool === 'measure') { xh.style.translate = `0 ${my}px`; xv.style.translate = `${mx}px 0`; }
+  }
+
+  /* dragging with smart guides */
+  const off = el => offsets.get(el) || { x: 0, y: 0 };
+  function setOff(el, x, y) {
+    offsets.set(el, { x, y });
+    el.style.translate = `${x}px ${y}px`;
+  }
+  function targets(el) {
+    const vh = innerHeight;
+    const list = $$('#sheet [data-block]').filter(b => !b.contains(el) && !el.contains(b)).map(b => b.getBoundingClientRect())
+      .filter(r => r.bottom > -240 && r.top < vh + 240 && r.width > 0);
+    const s = sheet.getBoundingClientRect(), pad = parseFloat(getComputedStyle(sheet).paddingLeft);
+    list.push({ left: s.left + pad, right: s.right - pad, top: s.top, bottom: s.top, width: s.width - pad * 2, height: 0 });
+    return list.map(r => ({ l: r.left, c: r.left + r.width / 2, r: r.right, t: r.top, m: r.top + r.height / 2, b: r.bottom, y: scrollY }));
+  }
+  function snap(a, list, keys, axisKeys) {
+    let best = null;
+    for (const t of list) {
+      const shift = axisKeys === 'y' ? t.y - scrollY : 0;
+      for (const k of keys) for (const q of keys) {
+        const d = t[q] + shift - a[k];
+        if (Math.abs(d) < 6 && (!best || Math.abs(d) < Math.abs(best.d))) best = { d, pos: t[q] + shift, t };
+      }
+    }
+    return best;
+  }
+  function placeSlot(el) {
+    if (slots.has(el)) return;
+    const d = document.createElement('div'); d.className = 'slot';
+    $('#slots').append(d); slots.set(el, d); drawSlot(el);
+  }
+  function drawSlot(el) {
+    const r = el.getBoundingClientRect(), o = off(el), d = slots.get(el);
+    d.style.cssText = `left:${r.left + scrollX - o.x}px;top:${r.top + scrollY - o.y}px;width:${r.width}px;height:${r.height}px`;
+  }
+  function beginDrag(el, e) {
+    const o = off(el);
+    act = { kind: 'drag', el, sx: e.clientX + scrollX, sy: e.clientY + scrollY, ox: o.x, oy: o.y, moved: false, list: null };
+  }
+  function runDrag(e) {
+    const dx = e.clientX + scrollX - act.sx, dy = e.clientY + scrollY - act.sy, el = act.el;
+    if (!act.moved) {
+      if (Math.hypot(dx, dy) < 4) return;
+      act.moved = true; act.list = targets(el); placeSlot(el);
+      el.classList.remove('settling'); el.classList.add('lifted', 'moved');
+      cur.dataset.mode = 'grab';
+      act.w = el.getBoundingClientRect();
+      act.base = { l: act.w.left - act.ox + 0, t: act.w.top + scrollY - act.oy };
+      act.bw = act.w.width; act.bh = act.w.height;
+    }
+    let x = act.ox + dx, y = act.oy + dy;
+    const l = act.base.l + x, top = act.base.t + y - scrollY;
+    const a = { l, c: l + act.bw / 2, r: l + act.bw, t: top, m: top + act.bh / 2, b: top + act.bh };
+    const sx = snap(a, act.list, ['l', 'c', 'r'], 'x'), sy = snap(a, act.list, ['t', 'm', 'b'], 'y');
+    if (sx) x += sx.d; if (sy) y += sy.d;
+    setOff(el, x, y);
+    const r = el.getBoundingClientRect();
+    gv.hidden = !sx; gh.hidden = !sy;
+    if (sx) {
+      const shift = sx.t.y - scrollY, y1 = Math.min(r.top, sx.t.t + shift), y2 = Math.max(r.bottom, sx.t.b + shift);
+      gv.style.translate = `${sx.pos}px ${y1 - 12}px`; gv.style.height = (y2 - y1 + 24) + 'px';
+    }
+    if (sy) {
+      const x1 = Math.min(r.left, sy.t.l), x2 = Math.max(r.right, sy.t.r);
+      gh.style.translate = `${x1 - 12}px ${sy.pos}px`; gh.style.width = (x2 - x1 + 24) + 'px';
+    }
+    pill.textContent = `${x >= 0 ? '+' : '−'}${Math.abs(Math.round(x))}, ${y >= 0 ? '+' : '−'}${Math.abs(Math.round(y))}`;
+  }
+  function moved() {
+    const n = offsets.size + (frac < .995 ? 1 : 0);
+    resetBtn.hidden = n === 0;
+    resetBtn.textContent = n ? `Reset layout (${n})` : 'Reset layout';
+  }
+
+  addEventListener('pointermove', e => {
+    if (e.pointerType === 'touch') return;
+    mx = e.clientX; my = e.clientY;
+    if (!seen) { seen = true; cur.hidden = false; if (tool === 'measure') xh.hidden = xv.hidden = false; }
+    moveCursor();
+    if (act?.kind === 'drag') runDrag(e);
+    else if (act?.kind === 'stretch') {
+      const r = name.getBoundingClientRect();
+      setFrac((e.clientX - r.left) / fullW);
+      pill.textContent = `wdth ${Math.round(nameStretch)}`;
+    } else probe();
+    paint();
+  });
+  document.addEventListener('pointerleave', () => { cur.hidden = true; seen = false; hover = null; xh.hidden = xv.hidden = true; paint(); });
+  addEventListener('pointerdown', e => {
+    if (e.pointerType === 'touch' || e.button !== 0) return;
+    finishIntro();
+    if (tool !== 'move') return;
+    if (e.target.closest('a,button,#bar,#rail,#insp,pre')) return;
+    const b = blockAt(e.clientX, e.clientY) || (nearEdge(name, e.clientX, e.clientY) ? name : null);
+    if (!b) return;
+    e.preventDefault();
+    if (nearEdge(b, e.clientX, e.clientY)) { act = { kind: 'stretch', el: name }; }
+    else beginDrag(b, e);
+  });
+  addEventListener('pointerup', e => {
+    if (!act) return;
+    const a = act; act = null; gv.hidden = gh.hidden = true;
+    if (a.kind === 'stretch') { log('PATCH', `/home/name/?wdth=${Math.round(nameStretch)}`); }
+    else if (a.moved) { a.el.classList.remove('lifted'); log('PATCH', a.el.dataset.route); }
+    else openInsp(a.el);
+    moved(); pill.textContent = 'You'; cur.dataset.mode = 'arrow'; probe(); paint();
+  });
+  addEventListener('pointercancel', () => { if (act) { act.el.classList.remove('lifted'); act = null; gv.hidden = gh.hidden = true; moved(); paint(); } });
+  addEventListener('click', e => {
+    if (tool !== 'measure' || e.target.closest('a,button,#bar,#rail,#insp')) return;
+    const b = inSheet(e.target); if (b) openInsp(b);
+  });
+  addEventListener('scroll', () => { if (seen) probe(); paint(); }, { passive: true });
+
+  resetBtn.addEventListener('click', () => {
+    offsets.forEach((_, el) => {
+      el.classList.add('settling'); el.style.translate = '';
+      setTimeout(() => el.classList.remove('settling', 'moved'), 440);
+    });
+    offsets.clear(); slots.forEach(d => d.remove()); slots.clear();
+    setFrac(1); moved(); paint(); frameLabel(); log('PUT', '/layout/');
+  });
+
+  /* inspector */
+  const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const pretty = o => esc(JSON.stringify(o, null, 2))
+    .replace(/"([^"]+)":/g, '<span class="k">"$1"</span>:')
+    .replace(/: (\d+|true|false)/g, ': <span class="n">$1</span>');
+  function payload(b) {
+    if (b.dataset.id === 'brick') return { name: b.dataset.name, group: b.closest('.course').dataset.group, main_focus: b.classList.contains('solid') };
+    if (b === name) return { first: 'Vegi', last: 'Sarthak', font: 'Anybody', wdth: Math.round(nameStretch), hint: 'Drag the right edge to stretch it' };
+    return DATA[b.dataset.id] || {};
+  }
+  function openInsp(b) {
+    picked = b; insp.hidden = false;
+    $('#insp-route').textContent = b.dataset.route;
+    $('#insp-json').innerHTML = pretty(payload(b));
+    const r = b.getBoundingClientRect(), s = sheet.getBoundingClientRect();
+    $('#insp-box').innerHTML = [['x', r.left - s.left], ['y', r.top - s.top], ['w', r.width], ['h', r.height]]
+      .map(([k, v]) => `<div><dt>${k}</dt><dd>${Math.round(v)}</dd></div>`).join('');
+    log('GET', b.dataset.route); paint();
+  }
+  function closeInsp() { insp.hidden = true; picked = null; paint(); }
+  $('#insp-close').addEventListener('click', closeInsp);
+
+  addEventListener('keydown', e => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const k = e.key.toLowerCase();
+    if (k === 'escape') closeInsp();
+    if (!fine) return;
+    if (k === 'v') setTool('move'); else if (k === 'm') setTool('measure'); else if (k === 'r') setTool('read');
+  });
+
+  /* urls.py rail and scroll spy */
+  $$('[data-go]').forEach(b => b.addEventListener('click', () => {
+    const t = document.getElementById(b.dataset.go);
+    t.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
+    if (tool !== 'read') openInsp(t);
+  }));
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    $$('[data-go]').forEach(b => b.setAttribute('aria-current', String(b.dataset.go === e.target.id)));
+    if (introDone) log('GET', e.target.dataset.route);
+  }), { rootMargin: '-35% 0px -60% 0px' });
+  $$('#home,.sec').forEach(s => spy.observe(s));
+
+  /* the Sarthak cursor */
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  let introDone = false, stop = false, sayTimer = 0;
+  function ghostTo(x, y, ms = 640, flip = false) {
+    ghost.style.setProperty('--t', ms + 'ms');
+    ghost.style.setProperty('--x', x + 'px'); ghost.style.setProperty('--y', y + 'px');
+    ghost.classList.toggle('flip', flip);
+    ghost.classList.toggle('edge', x - scrollX > innerWidth - 84);
+  }
+  function speak(text, ms = 6000) {
+    say.textContent = text; say.hidden = false;
+    clearTimeout(sayTimer); sayTimer = setTimeout(() => { say.hidden = true; }, ms);
+  }
+  const tween = (ms, fn) => new Promise(res => {
+    const t0 = performance.now();
+    (function f(n) {
+      if (stop) return res();
+      const t = Math.min(1, (n - t0) / ms), k = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+      fn(k); t < 1 ? requestAnimationFrame(f) : res();
+    })(t0);
+  });
+  const pageRect = el => { const r = el.getBoundingClientRect(); return { l: r.left + scrollX, t: r.top + scrollY, r: r.right + scrollX, b: r.bottom + scrollY, h: r.height, w: r.width }; };
+  const greeting = fine ? "Hi, I'm Sarthak. Drag anything here, or stretch my name." : "Tap Inspect to see each block's data.";
+  function park() {
+    const h = pageRect($('#home')), n = pageRect(name);
+    ghostTo(h.r - 66, n.t - 52, 620, true);
+    if (!fine || tool !== 'read') speak(greeting, 7000);
+    if (!fine) setTimeout(() => { if (tool === 'read') ghost.hidden = true; }, 7000);
+  }
+  function finishIntro() {
+    if (introDone) return;
+    introDone = true; stop = true;
+    setFrac(1); lede.style.translate = ''; gv.hidden = true; ghost.classList.remove('press');
+    ghost.hidden = fine && tool === 'read';
+    park();
+  }
+  async function intro() {
+    if (calm || document.hidden) { finishIntro(); return; }
+    setTimeout(finishIntro, 7000);
+    const start = Math.max(minFrac, .46);
+    setFrac(start); lede.style.translate = '56px 18px';
+    const n0 = pageRect(name);
+    ghost.style.setProperty('--t', '0ms');
+    ghost.style.setProperty('--x', (n0.r + 120) + 'px'); ghost.style.setProperty('--y', (n0.t + 170) + 'px');
+    ghost.hidden = fine && tool === 'read';
+    await wait(260); if (stop) return;
+    const edge = () => pageRect(ln2);
+    ghostTo(edge().r - 2, n0.t + n0.h * .7, 520); await wait(560); if (stop) return;
+    ghost.classList.add('press'); await wait(110);
+    await tween(980, k => {
+      setFrac(start + (1 - start) * k);
+      ghostTo(edge().r - 2, n0.t + n0.h * .7, 0);
+    });
+    if (stop) return;
+    ghost.classList.remove('press');
+    const l0 = pageRect(lede);
+    ghostTo(l0.l + 44, l0.t + 30, 520); await wait(560); if (stop) return;
+    ghost.classList.add('press'); await wait(90);
+    await tween(520, k => {
+      const x = 56 * (1 - k), y = 18 * (1 - k);
+      lede.style.translate = `${x}px ${y}px`;
+      ghostTo(l0.l + 44 - 56 * k, l0.t + 30 - 18 * k, 0);
+    });
+    if (stop) return;
+    lede.style.translate = '';
+    const r = lede.getBoundingClientRect(), nr = name.getBoundingClientRect();
+    gv.hidden = false; gv.style.translate = `${r.left}px ${nr.top - 10}px`; gv.style.height = (r.bottom - nr.top + 20) + 'px';
+    ghost.classList.remove('press'); await wait(420);
+    finishIntro();
+  }
+
+  /* section comments, parked in the empty column under each heading */
+  const wide = matchMedia('(min-width:860px)');
+  const talk = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting || !introDone || tool === 'read' || !wide.matches) return;
+    talk.unobserve(e.target);
+    const h = pageRect($('h2', e.target));
+    ghost.hidden = false; ghostTo(h.l + 4, h.b + 24, 780);
+    setTimeout(() => speak(e.target.dataset.say, 5200), 620);
+  }), { threshold: 0, rootMargin: '-30% 0px -50% 0px' });
+  $$('.sec[data-say]').forEach(s => talk.observe(s));
+
+  /* contact */
+  $('#copy').addEventListener('click', async e => {
+    const btn = e.currentTarget, a = $('#email');
+    try { await navigator.clipboard.writeText(a.textContent); btn.textContent = 'Copied'; log('POST', '/contact/copy/'); }
+    catch { const r = document.createRange(); r.selectNodeContents(a); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selected, press copy'; }
+    setTimeout(() => { btn.textContent = 'Copy email'; }, 2000);
+  });
+
+  /* boot */
+  addEventListener('resize', () => {
+    buildFit(); frameLabel(); slots.forEach((_, el) => drawSlot(el)); paint();
+    if (introDone && !say.hidden) park();
+  });
+  setTool(fine ? 'move' : 'read');
+  const ready = Promise.race([document.fonts?.load ? Promise.all([document.fonts.load('900 100px Anybody'), document.fonts.ready]) : Promise.resolve(), wait(1500)]);
+  ready.then(() => { buildFit(); frameLabel(); intro(); setTimeout(frameLabel, 400); });
+})();
+</script>
+
+</body></html>
